@@ -1,17 +1,9 @@
 package br.com.cddit.apirest.repository;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.util.Map;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 
@@ -22,7 +14,7 @@ import br.com.six2six.fixturefactory.Fixture;
 
 public class UserRepositoryUTest extends BaseRepositoryUTest<User, UserRepositoryImpl> {
 
-	// @Test
+	@Test
 	public void addUserAndFindIt() {
 
 		final User entity = Fixture.from(User.class).gimme("validUser");
@@ -48,24 +40,10 @@ public class UserRepositoryUTest extends BaseRepositoryUTest<User, UserRepositor
 
 				.build();
 
-		try {
-			executor.executeCommand(() -> {
-				return repository.saveOrUpdate(invalidUser).getId();
-			});
-			fail("An error should have been thrown");
-		} catch (final Exception e) {
-			assertThat(e, is(instanceOf(ConstraintViolationException.class)));
-			final ConstraintViolationException cve = (ConstraintViolationException) e;
-			final Set<ConstraintViolation<?>> constraintViolations = cve.getConstraintViolations();
-			assertThat(constraintViolations.size(), is(equalTo(constraintViolationsExpecteds.size())));
-			constraintViolations.forEach(cv -> {
-				final String prop = cv.getPropertyPath().toString();
-				assertThat(constraintViolationsExpecteds, hasKey(prop));
+		executor.executeCommandAndCheckViolations(() -> {
+			return repository.saveOrUpdate(invalidUser).getId();
+		}, constraintViolationsExpecteds);
 
-				assertThat(cv.getConstraintDescriptor().getMessageTemplate(),
-						is(equalTo(constraintViolationsExpecteds.get(prop))));
-			});
-		}
 	}
 
 	@Override

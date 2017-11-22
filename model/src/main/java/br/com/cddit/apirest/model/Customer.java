@@ -2,7 +2,10 @@ package br.com.cddit.apirest.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -17,7 +20,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "customers")
+@Table(name = "customers", uniqueConstraints = @UniqueConstraint(columnNames = "email", name = "customer_email_uk"))
+@PrimaryKeyJoinColumn(foreignKey = @ForeignKey(name = "fk_customer_to_user"))
 public class Customer extends User {
 
 	/**
