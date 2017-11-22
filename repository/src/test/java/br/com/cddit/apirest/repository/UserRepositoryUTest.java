@@ -46,6 +46,11 @@ public class UserRepositoryUTest extends BaseRepositoryUTest<User, UserRepositor
 
 	}
 
+	@Test(expected = NullPointerException.class)
+	public void findCategoryByIdNotFound() {
+		repository.findById(null);
+	}
+
 	@Override
 	UserRepositoryImpl getRepositoryInstance() {
 		return new UserRepositoryImpl();
