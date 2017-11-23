@@ -11,9 +11,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.com.cddit.apirest.model.BaseEntity;
+
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public abstract class CrudResource<T> {
+public abstract class CrudResource<T extends BaseEntity> {
 
 	@POST
 	public Response add(final String body) {
