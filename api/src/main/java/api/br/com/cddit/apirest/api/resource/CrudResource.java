@@ -1,5 +1,7 @@
 package api.br.com.cddit.apirest.api.resource;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -30,6 +32,11 @@ public abstract class CrudResource<T extends BaseEntity> {
 	@GET
 	@Path("{id}")
 	public T findById(@PathParam("id") final int id) {
+		return null;
+	}
+
+	@GET
+	public List<T> findAll() {
 		return null;
 	}
 

@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import br.com.cddit.apirest.model.User;
 import br.com.cddit.apirest.service.UserService;
 
-@Path("/users")
+@Path(ResourceDefinitions.USER_PATH)
 public class UserResource extends CrudResource<User> {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
