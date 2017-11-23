@@ -6,7 +6,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +28,7 @@ public class UserResource extends CrudResource<User> {
 	public Response add(final String body) {
 		logger.debug("Adding a new user with body {}", body);
 		service.alreadyExistsByUsername("");
-		return Response.status(HttpStatus.SC_OK).build();
+		return Response.status(200).build();
 	}
 
 }
