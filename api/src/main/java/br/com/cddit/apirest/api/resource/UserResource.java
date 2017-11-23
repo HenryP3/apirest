@@ -1,7 +1,9 @@
-package api.br.com.cddit.apirest.api.resource;
+package br.com.cddit.apirest.api.resource;
 
+import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.validation.Validator;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -29,6 +31,13 @@ public class UserResource extends CrudResource<User> {
 		logger.debug("Adding a new user with body {}", body);
 		service.alreadyExistsByUsername("");
 		return Response.status(200).build();
+	}
+
+	@Path("/hello")
+	@GET
+	@PermitAll
+	public Response hello() {
+		return Response.status(200).entity("you are welcome").build();
 	}
 
 }

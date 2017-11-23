@@ -6,7 +6,10 @@
 	<persistence-unit name="cdditPU" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-		<properties>
+<!-- 		<class>br.com.cddit.apirest.model.User</class>
+		<class>br.com.cddit.apirest.model.Customer</class>
+		<class>br.com.cddit.apirest.model.Operator</class>
+ -->		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />

@@ -17,13 +17,15 @@ public class ArquillianTestUtils {
 				.addPackages(true, "br.com.cddit")
 				.addAsResource("persistence-integration.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-				.addAsResource("META-INF/services/javax.enterprise.inject.spi.Extension")
+				// .addAsResource("META-INF/services/javax.enterprise.inject.spi.Extension")
 				.addAsWebInfResource("jboss-web.xml")
-				.addAsResource("application.properties")
+				// .addAsResource("application.properties")
 				.setWebXML(new File("src/test/resources/web.xml"))
 				.addAsLibraries(
 						Maven.resolver().loadPomFromFile("pom.xml")
-								.resolve("com.google.code.gson:gson", "org.mockito:mockito-core")
+								.resolve("com.google.code.gson:gson",
+										"org.mockito:mockito-core",
+										"br.com.six2six:fixture-factory")
 								.withTransitivity().asFile());
 	}
 

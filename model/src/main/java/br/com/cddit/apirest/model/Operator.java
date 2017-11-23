@@ -1,10 +1,12 @@
 package br.com.cddit.apirest.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "operator")
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//@EqualsAndHashCode(callSuper = true)
+//@Entity
+//@Table(name = "operators")
+// @PrimaryKeyJoinColumn(foreignKey = @ForeignKey(name = "fk_operator_to_user"))
 public class Operator extends User {
 
 	/**

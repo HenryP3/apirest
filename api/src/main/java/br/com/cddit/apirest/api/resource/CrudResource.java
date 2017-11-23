@@ -1,4 +1,4 @@
-package api.br.com.cddit.apirest.api.resource;
+package br.com.cddit.apirest.api.resource;
 
 import java.util.List;
 

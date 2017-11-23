@@ -87,7 +87,7 @@ public class UserRepositoryUTest extends BaseRepositoryUTest<User, UserFilter, U
 		loadDataForFindByFilter();
 
 		UserFilter userFilter = new UserFilter();
-		userFilter.setPageData(new PageData(0, 2, "name", OrderMode.DESCENDING));
+		userFilter.setPageData(new PageData(0, 2, "username", OrderMode.DESCENDING));
 
 		PageableData<User> result = repository.findByFilter(userFilter);
 		assertThat(result.getNumberOfRows(), is(equalTo(3)));
@@ -96,7 +96,7 @@ public class UserRepositoryUTest extends BaseRepositoryUTest<User, UserFilter, U
 		// assertThat(result.getRow(1).getUsername(), is(equalTo(johnDoe().getName())));
 
 		userFilter = new UserFilter();
-		userFilter.setPageData(new PageData(2, 2, "name", OrderMode.DESCENDING));
+		userFilter.setPageData(new PageData(2, 2, "username", OrderMode.DESCENDING));
 
 		result = repository.findByFilter(userFilter);
 		assertThat(result.getNumberOfRows(), is(equalTo(3)));
@@ -110,7 +110,7 @@ public class UserRepositoryUTest extends BaseRepositoryUTest<User, UserFilter, U
 
 		final UserFilter userFilter = new UserFilter();
 		userFilter.setUsername("m");
-		userFilter.setPageData(new PageData(0, 2, "name", OrderMode.ASCENDING));
+		userFilter.setPageData(new PageData(0, 2, "username", OrderMode.ASCENDING));
 
 		final PageableData<User> result = repository.findByFilter(userFilter);
 		assertThat(result.getNumberOfRows(), is(equalTo(2)));
@@ -125,7 +125,7 @@ public class UserRepositoryUTest extends BaseRepositoryUTest<User, UserFilter, U
 
 		final UserFilter userFilter = new UserFilter();
 		userFilter.setUsername("m");
-		userFilter.setPageData(new PageData(0, 2, "name", OrderMode.ASCENDING));
+		userFilter.setPageData(new PageData(0, 2, "username", OrderMode.ASCENDING));
 
 		final PageableData<User> result = repository.findByFilter(userFilter);
 		assertThat(result.getNumberOfRows(), is(equalTo(1)));

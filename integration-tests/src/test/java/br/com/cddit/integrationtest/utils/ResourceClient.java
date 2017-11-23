@@ -58,6 +58,7 @@ public class ResourceClient {
 	private Builder buildClient() {
 		Client resourceClient = ClientBuilder.newClient();
 		if (user != null) {
+			//
 			resourceClient = resourceClient
 					.register(new HttpBasicAuthenticator(user.getUsername(), user.getPassword()));
 		}

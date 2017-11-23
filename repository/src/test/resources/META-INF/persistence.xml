@@ -6,7 +6,6 @@
 	<persistence-unit name="cdditPU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.cddit.apirest.model.User</class>
-		<class>br.com.cddit.apirest.model.Customer</class>
 
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action"

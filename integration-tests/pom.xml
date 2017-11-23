@@ -7,7 +7,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>integration-tests</artifactId>
-
 	<properties>
 		<version.arquillian_core>1.1.5.Final</version.arquillian_core>
 		<version.arquillian.wildfly>8.1.0.Final</version.arquillian.wildfly>
@@ -64,6 +63,11 @@
 			<type>war</type>
 		</dependency>
 
+		<dependency>
+			<groupId>br.com.six2six</groupId>
+			<artifactId>fixture-factory</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>

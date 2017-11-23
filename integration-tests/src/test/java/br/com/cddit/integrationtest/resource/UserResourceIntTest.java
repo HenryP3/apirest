@@ -1,6 +1,11 @@
-package r.com.cddit.integrationtest.resource;
+package br.com.cddit.integrationtest.resource;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 import java.net.URL;
+
+import javax.ws.rs.core.Response;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -11,8 +16,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import api.br.com.cddit.apirest.api.resource.ResourceDefinitions;
-import br.com.cddit.apirest.model.User;
 import br.com.cddit.integrationtest.utils.ArquillianTestUtils;
 import br.com.cddit.integrationtest.utils.ResourceClient;
 
@@ -20,8 +23,11 @@ import br.com.cddit.integrationtest.utils.ResourceClient;
 public class UserResourceIntTest {
 
 	@ArquillianResource
-	private URL url;
-	private static final String PATH_RESOURCE = ResourceDefinitions.USER_PATH;
+	URL url;
+	private static final String PATH_RESOURCE = "/api/users"; //
+	// ResourceDefinitions.USER_PATH;
+	// private static final String PATH_RESOURCE = "/users"; //
+	// ResourceDefinitions.USER_PATH;
 	private ResourceClient resourceClient;
 
 	@Deployment
@@ -32,15 +38,20 @@ public class UserResourceIntTest {
 	@Before
 	public void initTestCase() {
 		this.resourceClient = new ResourceClient(url);
-
-		resourceClient.resourcePath("/DB").delete();
-		resourceClient.resourcePath("DB" + ResourceDefinitions.USER_PATH).postWithContent("");
-		resourceClient.user(new User());
+		//
+		// resourceClient.resourcePath("/DB").delete();
+		// resourceClient.resourcePath("DB" +
+		// ResourceDefinitions.USER_PATH).postWithContent("");
+		// resourceClient.user(new User());
 	}
 
 	@Test
 	@RunAsClient
 	public void addValidUserAndFindIt() {
+		final Response response = resourceClient.resourcePath("/users/hello").get();
+
+		assertThat(response.getStatus(), is(equalTo(200)));
+
 		// user fixture
 		// call url
 		// compara resultado com fixture
