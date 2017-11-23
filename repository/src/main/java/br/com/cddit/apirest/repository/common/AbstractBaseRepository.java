@@ -22,8 +22,6 @@ public abstract class AbstractBaseRepository<T extends BaseEntity> implements Ba
 	@PersistenceContext
 	EntityManager em;
 
-	protected abstract Class<T> getDomainClass();
-
 	@Override
 	public T saveOrUpdate(final T entity) {
 		if (entity.getId() == null) {

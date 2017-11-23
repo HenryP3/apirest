@@ -1,35 +1,52 @@
 package br.com.cddit.apirest.service;
 
-import java.util.Iterator;
-import java.util.Set;
+import java.util.Objects;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import br.com.cddit.apirest.model.User;
-import br.com.cddit.apirest.repository.UserRepositoryImpl;
+import br.com.cddit.apirest.model.common.PageableData;
+import br.com.cddit.apirest.model.filter.UserFilter;
+import br.com.cddit.apirest.repository.UserRepository;
 
-public class UserServiceImpl implements UserService {
+@Stateless
+public class UserServiceImpl extends AbstractCrudService<User, UserFilter, UserRepository> implements UserService {
 
-	private Validator validator;
-	private UserRepositoryImpl repo;
+	@Inject
+	private UserRepository repo;
 
-	public User saveOrUpdate(final User u) {
-		final Set<ConstraintViolation<User>> errors = validator.validate(u);
-		final Iterator<ConstraintViolation<User>> itErrors = errors.iterator();
+	@Override
+	public PageableData<User> findByFilter(final UserFilter userFilter) {
+		Objects.requireNonNull(userFilter, "Userfilter cannot be null");
+		return repo.findByFilter(userFilter);
+	}
 
-		if (itErrors.hasNext()) {
-			final ConstraintViolation<User> violation = itErrors.next();
-			// throw new FieldNotValidException(violation.getPropertyPath().toString(),
-			// violation.getMessage());
-		}
+	@Override
+	public UserRepository getRepo() {
+		return repo;
+	}
 
-		// if (repo.alreadyExists(u)) {
-		// throw new UserExistentException("este usuario ja existe, e devmos aplicar
-		// I18N");
-		// }
+	@Override
+	public boolean alreadyExistsByUsername(final User user) {
+		Objects.requireNonNull(user, "User cannot be null");
+		return repo.alreadyExistsByUsername(user);
+	}
 
-		return repo.saveOrUpdate(u);
+	@Override
+	public boolean alreadyExistsByUsername(final String username) {
+		validateUserNotNull(username);
+		return repo.alreadyExistsByUsername(username);
+	}
+
+	private void validateUserNotNull(final String username) {
+		Objects.requireNonNull(username, "Username cannot be null");
+	}
+
+	@Override
+	public User findByUsername(final String username) {
+		validateUserNotNull(username);
+		return repo.findByUsername(username);
 	}
 
 }

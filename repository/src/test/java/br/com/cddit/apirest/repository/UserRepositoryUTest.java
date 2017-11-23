@@ -82,11 +82,6 @@ public class UserRepositoryUTest extends BaseRepositoryUTest<User, UserRepositor
 		assertThat(users.size(), is(equalTo(usersFromDB.size())));
 	}
 
-	// @Test
-	public void findByFilterNoFilter() {
-
-	}
-
 	@Test
 	public void findByFilterWithPagingOrderingByNameDescending() {
 		loadDataForFindByFilter();

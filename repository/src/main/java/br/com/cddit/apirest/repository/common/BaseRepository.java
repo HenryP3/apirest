@@ -25,4 +25,6 @@ public interface BaseRepository<T extends BaseEntity> {
 
 	public PageableData<T> findByParameters(final String clause, final PageData paginationData,
 			final Map<String, Object> queryParameters, final String defaultSortFieldWithDirection);
+
+	public Class<T> getDomainClass();
 }
