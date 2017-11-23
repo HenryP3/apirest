@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.cddit.apirest.model.BaseEntity;
+import br.com.cddit.apirest.model.common.PageData;
 import br.com.cddit.apirest.model.common.PageableData;
 
 public interface BaseRepository<T extends BaseEntity> {

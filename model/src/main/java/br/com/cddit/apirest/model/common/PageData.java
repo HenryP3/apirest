@@ -1,5 +1,10 @@
-package br.com.cddit.apirest.repository.common;
+package br.com.cddit.apirest.model.common;
 
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
 public class PageData {
 	private final int firstResult;
 	private final int maxResults;
@@ -18,30 +23,7 @@ public class PageData {
 		this.orderMode = orderMode;
 	}
 
-	public int getFirstResult() {
-		return firstResult;
-	}
-
-	public int getMaxResults() {
-		return maxResults;
-	}
-
-	public String getOrderField() {
-		return orderField;
-	}
-
-	public OrderMode getOrderMode() {
-		return orderMode;
-	}
-
 	public boolean isAscending() {
 		return OrderMode.ASCENDING.equals(orderMode);
 	}
-
-	@Override
-	public String toString() {
-		return "PaginationData [firstResult=" + firstResult + ", maxResults=" + maxResults + ", orderField="
-				+ orderField + ", orderMode=" + orderMode + "]";
-	}
-
 }

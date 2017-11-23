@@ -1,5 +1,7 @@
 package br.com.cddit.apirest.model.fixture;
 
+import java.util.Random;
+
 import org.apache.commons.lang.StringUtils;
 
 import br.com.cddit.apirest.model.User;
@@ -15,7 +17,16 @@ public class UserFixture implements TemplateLoader {
 		Fixture.of(User.class).addTemplate("validUser", new Rule() {
 			{
 				add("version", 0L);
-				add("username", random("userwithmorethan7chars", "user with large enough name"));
+				add("username", uniqueRandom("userwithmorethan7chars",
+						"userwithmorethan7charsv2",
+						"userwithmorethan7charsv3",
+						"userwithmorethan7charsv4",
+						"userwithmorethan7charsv3d",
+						"userwithmorethan7charsv4r",
+						"userwithmorethan7charsv3u",
+						"userwithmorethan7charsv4j",
+						"userwithmorethan7charsv5",
+						"user with large enough name" + new Random().nextInt(900)));
 				add("password", "encryptar");
 			}
 		});

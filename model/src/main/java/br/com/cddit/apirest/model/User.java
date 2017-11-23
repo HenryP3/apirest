@@ -6,6 +6,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.com.cddit.apirest.model.validation.enums.UserValidationMessages;
@@ -34,6 +35,7 @@ public class User extends BaseEntity {
 	@Size(min = 7, max = 50, message = UserValidationMessages.USERNAME_SIZE_MIN_MAX)
 	protected String username;
 
+	@NotNull
 	@Column(nullable = false)
 	@Size(max = 50, message = UserValidationMessages.PASSWORD_SIZE_MAX)
 	protected String password;

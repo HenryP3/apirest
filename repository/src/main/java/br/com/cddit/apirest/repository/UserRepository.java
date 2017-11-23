@@ -7,4 +7,6 @@ public interface UserRepository {
 	public boolean alreadyExistsByUsername(final User user);
 
 	public boolean alreadyExistsByUsername(final String username);
+
+	public User findByUsername(final String username);
 }

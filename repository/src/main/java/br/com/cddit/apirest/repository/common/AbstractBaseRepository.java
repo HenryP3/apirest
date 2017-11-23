@@ -10,10 +10,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import br.com.cddit.apirest.model.BaseEntity;
+import br.com.cddit.apirest.model.common.PageData;
 import br.com.cddit.apirest.model.common.PageableData;
+import lombok.Getter;
 import lombok.Setter;
 
 @Setter
+@Getter
 public abstract class AbstractBaseRepository<T extends BaseEntity> implements BaseRepository<T> {
 
 	@PersistenceContext
@@ -63,10 +66,11 @@ public abstract class AbstractBaseRepository<T extends BaseEntity> implements Ba
 	@Override
 	public boolean alreadyExists(final String propertyName, final String propertyValue, final Long id) {
 		final StringBuilder jpql = new StringBuilder();
+
 		jpql.append("Select 1 From " + getDomainClass().getSimpleName() + " e where e." + propertyName
 				+ " = :propertyValue");
 		if (id != null) {
-			jpql.append(" and e.id != :id");
+			jpql.append(" and e.id = :id");
 		}
 
 		final Query query = em.createQuery(jpql.toString());
