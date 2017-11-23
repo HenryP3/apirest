@@ -53,7 +53,14 @@
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
+					<packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -1,5 +1,6 @@
 package br.com.cddit.apirest.repository.common;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -10,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import br.com.cddit.apirest.model.BaseEntity;
+import br.com.cddit.apirest.model.common.GenericFilter;
 import br.com.cddit.apirest.model.common.PageData;
 import br.com.cddit.apirest.model.common.PageableData;
 import lombok.Getter;
@@ -17,7 +19,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public abstract class AbstractBaseRepository<T extends BaseEntity> implements BaseRepository<T> {
+public abstract class AbstractBaseRepository<T extends BaseEntity, F extends GenericFilter>
+		implements BaseRepository<T, F> {
 
 	@PersistenceContext
 	EntityManager em;
@@ -102,6 +105,13 @@ public abstract class AbstractBaseRepository<T extends BaseEntity> implements Ba
 		final List<T> entities = queryEntities.getResultList();
 
 		return new PageableData<T>(countWithFilter(clause, queryParameters), entities);
+	}
+
+	@Override
+	public PageableData<T> findByFilter(final F filter) {
+		final StringBuilder clause = new StringBuilder("WHERE e.id is not null");
+		final Map<String, Object> queryParameters = new HashMap<>();
+		return findByParameters(clause.toString(), filter.getPageData(), queryParameters, "name ASC");
 	}
 
 	private int countWithFilter(final String clause, final Map<String, Object> queryParameters) {

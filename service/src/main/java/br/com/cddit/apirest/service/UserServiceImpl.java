@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import br.com.cddit.apirest.model.User;
-import br.com.cddit.apirest.model.common.PageableData;
 import br.com.cddit.apirest.model.filter.UserFilter;
 import br.com.cddit.apirest.repository.UserRepository;
 
@@ -15,12 +14,6 @@ public class UserServiceImpl extends AbstractCrudService<User, UserFilter, UserR
 
 	@Inject
 	private UserRepository repo;
-
-	@Override
-	public PageableData<User> findByFilter(final UserFilter userFilter) {
-		Objects.requireNonNull(userFilter, "Userfilter cannot be null");
-		return repo.findByFilter(userFilter);
-	}
 
 	@Override
 	public UserRepository getRepo() {

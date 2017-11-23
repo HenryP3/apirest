@@ -4,9 +4,10 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import br.com.cddit.apirest.model.Customer;
+import br.com.cddit.apirest.model.filter.CustomerFilter;
 import br.com.six2six.fixturefactory.Fixture;
 
-public class CustomerRepositoryUTest extends BaseRepositoryUTest<Customer, CustomerRepositoryImpl> {
+public class CustomerRepositoryUTest extends BaseRepositoryUTest<Customer, CustomerFilter, CustomerRepositoryImpl> {
 
 	CustomerRepositoryImpl repo;
 

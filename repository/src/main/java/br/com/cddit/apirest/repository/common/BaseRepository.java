@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.cddit.apirest.model.BaseEntity;
+import br.com.cddit.apirest.model.common.GenericFilter;
 import br.com.cddit.apirest.model.common.PageData;
 import br.com.cddit.apirest.model.common.PageableData;
 
-public interface BaseRepository<T extends BaseEntity> {
+public interface BaseRepository<T extends BaseEntity, F extends GenericFilter> {
 
 	public T saveOrUpdate(final T entity);
 
@@ -27,4 +28,7 @@ public interface BaseRepository<T extends BaseEntity> {
 			final Map<String, Object> queryParameters, final String defaultSortFieldWithDirection);
 
 	public Class<T> getDomainClass();
+
+	public PageableData<T> findByFilter(final F filter);
+
 }

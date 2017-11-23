@@ -14,7 +14,7 @@ import br.com.cddit.apirest.repository.common.AbstractBaseRepository;
 import br.com.cddit.apirest.util.PasswordUtils;
 
 @Named
-public class UserRepositoryImpl extends AbstractBaseRepository<User> implements UserRepository {
+public class UserRepositoryImpl extends AbstractBaseRepository<User, UserFilter> implements UserRepository {
 
 	@Override
 	public Class<User> getDomainClass() {

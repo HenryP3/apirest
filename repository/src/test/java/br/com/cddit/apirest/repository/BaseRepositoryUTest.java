@@ -9,11 +9,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 
 import br.com.cddit.apirest.model.BaseEntity;
+import br.com.cddit.apirest.model.common.GenericFilter;
 import br.com.cddit.apirest.repository.common.AbstractBaseRepository;
 import br.com.cddit.apirest.repository.common.DBCommandTransctionalExecutor;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
-public abstract class BaseRepositoryUTest<E extends BaseEntity, R extends AbstractBaseRepository<E>> {
+public abstract class BaseRepositoryUTest<E extends BaseEntity, F extends GenericFilter, R extends AbstractBaseRepository<E, F>> {
 
 	EntityManagerFactory emf;
 	EntityManager em;

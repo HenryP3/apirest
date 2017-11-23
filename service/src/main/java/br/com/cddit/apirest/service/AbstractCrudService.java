@@ -9,10 +9,16 @@ import br.com.cddit.apirest.model.common.GenericFilter;
 import br.com.cddit.apirest.model.common.PageableData;
 import br.com.cddit.apirest.repository.common.BaseRepository;
 
-public abstract class AbstractCrudService<T extends BaseEntity, F extends GenericFilter, R extends BaseRepository<T>>
+public abstract class AbstractCrudService<T extends BaseEntity, F extends GenericFilter, R extends BaseRepository<T, F>>
 		implements CrudService<T, F> {
 
 	public abstract R getRepo();
+
+	@Override
+	public PageableData<T> findByFilter(final F userFilter) {
+		Objects.requireNonNull(userFilter, "Userfilter cannot be null");
+		return getRepo().findByFilter(userFilter);
+	}
 
 	@Override
 	public T saveOrUpdate(final T u) {
@@ -28,12 +34,6 @@ public abstract class AbstractCrudService<T extends BaseEntity, F extends Generi
 					String.format("Could not find %s with id %d", getRepo().getDomainClass(), id));
 		}
 		return entity;
-	}
-
-	@Override
-	public PageableData<T> findByFilter(final GenericFilter userFilter) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
