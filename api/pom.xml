@@ -15,7 +15,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>br.com.cddit.apirest</groupId>
-			<artifactId>service</artifactId>
+			<artifactId>api-resource</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

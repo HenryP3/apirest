@@ -36,14 +36,6 @@
 
 		<dependency>
 			<groupId>br.com.cddit.apirest</groupId>
-			<artifactId>api</artifactId>
-			<version>${project.version}</version>
-			<type>test-jar</type>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>br.com.cddit.apirest</groupId>
 			<artifactId>repository</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -57,10 +49,9 @@
 
 		<dependency>
 			<groupId>br.com.cddit.apirest</groupId>
-			<artifactId>api</artifactId>
+			<artifactId>api-resource</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
-			<type>war</type>
 		</dependency>
 
 		<dependency>

@@ -16,6 +16,7 @@
 		<module>api</module>
 		<module>integration-tests</module>
 		<module>ear</module>
+		<module>api-resource</module>
 	</modules>
 
 	<properties>

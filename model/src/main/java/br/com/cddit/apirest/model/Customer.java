@@ -21,8 +21,6 @@ public class Customer extends User {
 	 */
 	private static final long serialVersionUID = 8206631962934087282L;
 
-	private String name;
-
 	@NotNull
 	@Column(unique = true)
 	@Size(min = 7, max = 50)

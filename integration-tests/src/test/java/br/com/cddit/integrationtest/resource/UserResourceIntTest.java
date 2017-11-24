@@ -39,6 +39,8 @@ public class UserResourceIntTest {
 	public void initTestCase() {
 		this.resourceClient = new ResourceClient(url);
 		//
+		// a ideia do codigo abaixo eh a fazer um cleanup no banco de dados ou inserir
+		// uma massa de dados
 		// resourceClient.resourcePath("/DB").delete();
 		// resourceClient.resourcePath("DB" +
 		// ResourceDefinitions.USER_PATH).postWithContent("");
