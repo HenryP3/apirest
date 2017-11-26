@@ -2,6 +2,8 @@ package br.com.cddit.apirest.api.resource;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.validation.Validator;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,6 +20,9 @@ import br.com.cddit.apirest.model.BaseEntity;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public abstract class CrudResource<T extends BaseEntity> {
+
+	@Inject
+	protected Validator validator;
 
 	@POST
 	public Response add(final String body) {

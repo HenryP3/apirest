@@ -1,7 +1,6 @@
 package br.com.cddit.apirest.api.resource;
 
 import javax.annotation.security.PermitAll;
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -9,16 +8,15 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.com.cddit.apirest.model.User;
-import br.com.cddit.apirest.service.UserService;
-
-@Path(ResourceDefinitions.USER_PATH)
-public class UserResource extends CrudResource<User> {
+@Path("/hello")
+public class HelloResource {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Inject
-	private UserService service;
-
+	// @Inject
+	// private UserService service;
+	//
+	// @Inject
+	// Validator validator;
 	//
 	// @Override
 	// @POST
@@ -28,11 +26,14 @@ public class UserResource extends CrudResource<User> {
 	// return Response.status(200).build();
 	// }
 
-	@Path("/hello")
+	@Path("/v2")
 	@GET
 	@PermitAll
 	public Response hello() {
-		System.out.println(service);
+		System.out.println("@@@@@@@@@@@@ MHBP @@@@@@@@@@@@@");
+		System.out.println("@@@@@@@@@@@@ MHBP @@@@@@@@@@@@@");
+		System.out.println("@@@@@@@@@@@@ MHBP @@@@@@@@@@@@@");
+		System.out.println("@@@@@@@@@@@@ MHBP @@@@@@@@@@@@@");
 		return Response.status(200).entity("you are welcome").build();
 	}
 

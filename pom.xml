@@ -122,6 +122,14 @@
 
 			<dependency>
 				<groupId>br.com.cddit.apirest</groupId>
+				<artifactId>api-resource</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+
+
+			<dependency>
+				<groupId>br.com.cddit.apirest</groupId>
 				<artifactId>api</artifactId>
 				<version>${project.version}</version>
 				<type>web</type>
@@ -236,6 +244,7 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
+			<scope>test</scope>
 		</dependency>
 
 
